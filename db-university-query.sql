@@ -48,6 +48,13 @@ inner join degrees d on s.degree_id = d.id
 inner join departments dep on d.department_id = dep.id
 order by Nome desc, Cognome desc;
 
+-- Bonus. Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
+--        superare ciascuno dei suoi esami
+select s.name as Nome_Studente, s.surname as Cognome_Studente, es.exam_id as ID_Esame, count(es.exam_id) as Tentativi
+from exam_student es
+inner join students s on es.student_id = s.id 
+group by es.exam_id
+order by Nome_Studente asc, Cognome_Studente asc;
 
 
 
